@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Android Developer">
+<meta property="og:type" content="website">
+<meta property="og:title" content="乐胥的个人博客">
+<meta property="og:url" content="http://www.jinwenqi.top/index.html">
+<meta property="og:site_name" content="乐胥的个人博客">
+<meta property="og:description" content="Android Developer">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="乐胥的个人博客">
+<meta name="twitter:description" content="Android Developer">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.jinwenqi.top/"/>
+
+
+
+
+
+  <title>乐胥的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">乐胥的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.jinwenqi.top/2018/04/15/一个简单的键盘/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lexu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乐胥的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/15/一个简单的键盘/" itemprop="url">一个简单的键盘</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-15T17:52:15+08:00">
+                2018-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/15/一个简单的键盘/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/04/15/一个简单的键盘/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/04/15/一个简单的键盘/" class="leancloud_visitors" data-flag-title="一个简单的键盘">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>   很简单，只需要用到系统提供了两个类<code>Keyboard</code>和<code>KeyboardView</code>，把写好键盘布局文件送到键盘类中，就可以实现相应的自定义功能。</p>
+<h3 id="键盘布局"><a href="#键盘布局" class="headerlink" title="键盘布局"></a>键盘布局</h3><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;Keyboard xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+android:horizontalGap=&quot;0px&quot;
+android:verticalGap=&quot;0px&quot;
+android:keyHeight=&quot;7.5%p&quot;
+android:keyWidth=&quot;30%p&quot;&gt;
+
+&lt;Row android:verticalGap=&quot;1%p&quot;&gt;
+    &lt;Key
+        android:codes=&quot;49&quot;
+        android:keyLabel=&quot;1&quot;
+        android:horizontalGap=&quot;2%p&quot;/&gt;
+    &lt;Key
+        android:codes=&quot;50&quot;
+        android:keyLabel=&quot;2&quot;
+        android:horizontalGap=&quot;2%p&quot;/&gt;
+    &lt;Key
+        android:codes=&quot;51&quot;
+        android:keyLabel=&quot;3&quot;
+        android:horizontalGap=&quot;2%p&quot;/&gt;
+&lt;/Row&gt;
+&lt;Row&gt;
+    &lt;Key
+        android:codes=&quot;-2&quot;
+        android:keyLabel=&quot;abc&quot;
+        android:horizontalGap=&quot;2%p&quot;/&gt;
+    &lt;Key
+        android:codes=&quot;48&quot;
+        android:keyLabel=&quot;0&quot;
+        android:horizontalGap=&quot;2%p&quot;/&gt;
+    &lt;Key
+        android:codes=&quot;-5&quot;
+        android:isRepeatable=&quot;true&quot;
+        android:keyIcon=&quot;@mipmap/ic_delete&quot;
+        android:horizontalGap=&quot;2%p&quot;/&gt;
+&lt;/Row&gt;
+&lt;/Keyboard&gt;
+</code></pre><p><img src="https://i.imgur.com/XDAvsin.png" alt="键盘按键布局"></p>
+<p>每一个按键的宽高对应的属性是<code>android:keyWidth</code>、<code>android:keyHeight</code>，行与行之间的间隙（下方间隙）可以用<code>android:vertical</code>，列与列之间的*（左方间隙）是<code>Gapandroid:horizontalGap</code>。<br>按键的换行用<code>Row</code>来处理，每一个按键<code>Key</code>都在其中，其中<code>android:keyLabel</code>是按键上的文字，<code>android:codes</code>是在<code>EditText</code>上输出的文字。注意一下这个<code>codes</code>值不能随便填字符串，它一般是unicode值，像我上面48对应的是十进制的0，这些你对照ASCII表就行，如果你想输出真正的字符串，则需要用属性<code>keyOutputText</code>。你想按键不要文字而放置图片，可以使用<code>android:keyIcon</code>属性。要想实现删除键那种长按连续删除可以使用<code>android:isRepeatable</code>属性<br>这里宽高、间距的单位既可以是像素，英寸等，也可以是相对于基础取值的百分比，以%p结尾。我建议开发过程中使用百分比单位比较好，毕竟屏幕适配还是百分比布局最稳妥。</p>
+<p>按键的布局放置在<code>res/xml</code>文件夹下</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;Keyboard xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+android:horizontalGap=&quot;0px&quot;
+android:verticalGap=&quot;0px&quot;
+android:keyHeight=&quot;7.5%p&quot;
+android:keyWidth=&quot;30%p&quot;&gt;
+&lt;Row android:verticalGap=&quot;1%p&quot;&gt;
+    &lt;Key
+        android:codes=&quot;49&quot;
+        android:keyLabel=&quot;1&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+    &lt;Key
+        android:codes=&quot;50&quot;
+        android:keyLabel=&quot;2&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+    &lt;Key
+        android:codes=&quot;51&quot;
+        android:keyLabel=&quot;3&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+&lt;/Row&gt;
+&lt;Row android:verticalGap=&quot;1%p&quot;&gt;
+    &lt;Key
+        android:codes=&quot;52&quot;
+        android:keyLabel=&quot;4&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+    &lt;Key
+        android:codes=&quot;53&quot;
+        android:keyLabel=&quot;5&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+    &lt;Key
+        android:codes=&quot;54&quot;
+        android:keyLabel=&quot;6&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+&lt;/Row&gt;
+&lt;Row android:verticalGap=&quot;1%p&quot;&gt;
+    &lt;Key
+        android:codes=&quot;55&quot;
+        android:keyLabel=&quot;7&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+    &lt;Key
+        android:codes=&quot;56&quot;
+        android:keyLabel=&quot;8&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+    &lt;Key
+        android:codes=&quot;57&quot;
+        android:keyLabel=&quot;9&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+&lt;/Row&gt;
+&lt;Row&gt;
+    &lt;Key
+        android:codes=&quot;-2&quot;
+        android:keyLabel=&quot;abc&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+    &lt;Key
+        android:codes=&quot;48&quot;
+        android:keyLabel=&quot;0&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+    &lt;Key
+        android:codes=&quot;-5&quot;
+        android:isRepeatable=&quot;true&quot;
+        android:keyIcon=&quot;@mipmap/ic_delete&quot;
+        android:horizontalGap=&quot;2%p&quot;&gt;
+
+    &lt;/Key&gt;
+&lt;/Row&gt;
+&lt;/Keyboard&gt;
+</code></pre><p>键盘的布局文件</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;android.inputmethodservice.KeyboardView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+android:layout_width=&quot;match_parent&quot; android:layout_height=&quot;wrap_content&quot;
+android:id=&quot;@+id/view_keyboard&quot;
+android:background=&quot;#999999&quot;
+android:focusable=&quot;true&quot;
+android:focusableInTouchMode=&quot;true&quot;
+android:keyBackground=&quot;@drawable/selector_keyboard_key&quot;
+android:keyPreviewHeight=&quot;64dip&quot;
+android:keyPreviewLayout=&quot;@layout/view_keyboard_preview&quot;
+android:keyTextColor=&quot;@android:color/black&quot;
+android:keyTextSize=&quot;24sp&quot;
+android:labelTextSize=&quot;18sp&quot;
+android:paddingTop=&quot;8dip&quot;
+android:paddingBottom=&quot;8dip&quot;
+android:shadowColor=&quot;#FFFFFF&quot;
+android:shadowRadius=&quot;0.0&quot;
+android:visibility=&quot;gone&quot;/&gt;
+</code></pre><p><code>android:keyBackground</code>：键盘背景图<br><code>android:keyPreviewLayout</code>：键盘点击时候预览图的布局，我这里是一个TextView。预览图就是点击按键后短暂弹出的提示布局文件</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;TextView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot;
+android:background=&quot;@android:color/holo_red_light&quot;
+android:textColor=&quot;@android:color/white&quot;
+android:gravity=&quot;center&quot;
+android:textSize=&quot;24sp&quot;/&gt;
+</code></pre><p><code>android:keyPreviewHeight</code>：键盘点击时候预览图的高度<br><code>android:keyTextColor</code>：按键文字的颜色<br><code>android:keyTextSize</code>：按键文字大小<br><code>android:labelTextSize</code>：如果同时设置了文字+图片的按键，用这个属性进行设置。这边我比较纳闷，明明文字加图表不能同时在按键上显示，这个属性意义应该不能这么理解了吧<br><code>android:shadowColor android:shadowRadius</code>：没有这两个属性，按键上文字会发虚模糊</p>
+<p>最后来看看键盘摆放位置，在相对布局的最底下，默认隐藏</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;
+tools:context=&quot;com.renyu.keyboarddemo.MainActivity&quot;&gt;
+&lt;LinearLayout
+    android:id=&quot;@+id/layout_root&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:orientation=&quot;vertical&quot;&gt;
+    &lt;View
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;400dip&quot;&gt;&lt;/View&gt;
+    &lt;com.renyu.keyboarddemo.KeyBoardEditText
+        android:id=&quot;@+id/ed_main&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;50dip&quot;
+        android:background=&quot;@android:color/holo_orange_dark&quot;/&gt;
+&lt;/LinearLayout&gt;
+&lt;LinearLayout
+    android:id=&quot;@+id/layout_main&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:orientation=&quot;vertical&quot;
+    android:layout_alignParentBottom=&quot;true&quot;
+    android:background=&quot;#999999&quot;
+    android:visibility=&quot;gone&quot;&gt;
+    &lt;include layout=&quot;@layout/content_keyboard&quot;&gt;&lt;/include&gt;
+&lt;/LinearLayout&gt;
+&lt;/RelativeLayout&gt;
+</code></pre><h3 id="键盘功能"><a href="#键盘功能" class="headerlink" title="键盘功能"></a>键盘功能</h3><p>键盘按键输出处理用<code>EditText</code>，流程是初始化好一个<code>Keyboard</code>类，然后将该类赋值到<code>keyboardView</code>上，同时设置<code>KeyboardView.OnKeyboardActionListener</code>来处理相应的按键回调事件</p>
+<p>初始化键盘，这里得到字母键盘与数字键盘</p>
+<pre><code>private void initEditView() {
+    mkeyboardLetter = new Keyboard(mContext, R.xml.keyboard_letter);
+    mKeyboardNumber = new Keyboard(mContext, R.xml.keyboard_number);
+}
+</code></pre><p>然后添加按键回调</p>
+<pre><code>     mKeyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
+        // 当用户按下一个键时调用。在调用onKey之前调用。如果之前定义的codes有问题，primaryCode为0
+        @Override
+        public void onPress(int primaryCode) {
+            canShowPreview(primaryCode);
+        }
+
+        // 当用户释放键时调用
+        @Override
+        public void onRelease(int i) {
+
+        }
+
+        // 之前codes字段定义的值
+        @Override
+        public void onKey(int primaryCode, int[] ints) {
+            Editable editable = getText();
+            int start = getSelectionStart();
+            // 删除功能
+            if (primaryCode == Keyboard.KEYCODE_DELETE) {
+                if (!TextUtils.isEmpty(editable) &amp;&amp; start &gt; 0) {
+                    editable.delete(start - 1, start);
+                }
+            }
+            // 字母键盘与数字键盘切换
+            else if (primaryCode == Keyboard.KEYCODE_MODE_CHANGE) {
+                changeKeyBoard(!mChangeLetter);
+            }
+            // 完成
+            else if (primaryCode == Keyboard.KEYCODE_DONE) {
+                mKeyboardView.setVisibility(GONE);
+                mViewGroup.setVisibility(GONE);
+                mListener.hide();
+            }
+            // 切换大小写
+            else if (primaryCode == Keyboard.KEYCODE_SHIFT) {
+                changeCapital(!mIsCapital);
+                mKeyboardView.setKeyboard(mkeyboardLetter);
+            } else {
+                editable.insert(start, String.valueOf(Character.toChars(primaryCode)));
+            }
+        }
+
+        // 如果之前在keyOutputText定义过数值，则按键之后会在此回调中进行响应
+        @Override
+        public void onText(CharSequence charSequence) {
+
+        }
+
+        // 下面都是在键盘上进行手势操作
+        @Override
+        public void swipeLeft() {
+
+        }
+
+        @Override
+        public void swipeRight() {
+
+        }
+
+        @Override
+        public void swipeDown() {
+
+        }
+
+        @Override
+        public void swipeUp() {
+
+        }
+    });
+}
+</code></pre><p>大小写相互切换 </p>
+<pre><code> private void changeCapital(boolean isCapital) {
+    String lowercase = &quot;abcdefghijklmnopqrstuvwxyz&quot;;
+    List&lt;Keyboard.Key&gt; keyList = mkeyboardLetter.getKeys();
+    for (Keyboard.Key key : keyList) {
+        if (key.label != null &amp;&amp; lowercase.contains(key.label.toString().toLowerCase())) {
+            if (isCapital) {
+                key.label = key.label.toString().toUpperCase();
+                key.codes[0] -= 32;
+            } else {
+                key.label = key.label.toString().toLowerCase();
+                key.codes[0] += 32;
+            }
+        }
+        if (key.label != null &amp;&amp; &quot;小写&quot;.equals(key.label) &amp;&amp; isCapital) {
+            key.label = &quot;大写&quot;;
+        } else if (key.label != null &amp;&amp; &quot;大写&quot;.equals(key.label) &amp;&amp; !isCapital) {
+            key.label = &quot;小写&quot;;
+        }
+        if (key.label != null &amp;&amp; key.label == &quot;space&quot;) {
+            key.label = &quot;空格&quot;;
+        }
+    }
+    mIsCapital = isCapital;
+}
+</code></pre><p>数字键盘与字母键盘相互切换，不同的键盘重新设置到键盘视图上，只要调用<code>KeyboardView.setKeyboard()</code>即可</p>
+<pre><code>private void changeKeyBoard(boolean letter) {
+    mChangeLetter = letter;
+    if (mChangeLetter) {
+        mKeyboardView.setKeyboard(mkeyboardLetter);
+    } else {
+        mKeyboardView.setKeyboard(mKeyboardNumber);
+    }
+}
+</code></pre><p>一般通过触摸文本框显示键盘，点击返回键或空白处键盘收起。注意需要将系统输入法给隐藏，不然就乱七八糟的了</p>
+<pre><code> @Override
+public boolean onTouchEvent(MotionEvent event) {
+    KeyboardUtils.hideSoftInput(this);
+    if (event.getAction() == MotionEvent.ACTION_UP) {
+        if (mKeyboardView.getVisibility() != View.VISIBLE) {
+            mKeyboardView.setVisibility(View.VISIBLE);
+            mViewGroup.setVisibility(View.VISIBLE);
+            mListener.show();
+        }
+    }
+    return true;
+}
+
+@Override
+public boolean onKeyDown(int keyCode, KeyEvent event) {
+    if (keyCode == KeyEvent.KEYCODE_BACK &amp;&amp; mKeyboardView.getVisibility() != View.GONE
+            &amp;&amp; mViewGroup.getVisibility() != View.GONE) {
+        mKeyboardView.setVisibility(View.GONE);
+        mViewGroup.setVisibility(View.GONE);
+        mListener.hide();
+        return true;
+    }
+    return super.onKeyDown(keyCode, event);
+}
+
+@Override
+protected void onAttachedToWindow() {
+    super.onAttachedToWindow();
+    KeyboardUtils.hideSoftInput(this);
+}
+
+@Override
+protected void onDetachedFromWindow() {
+    super.onDetachedFromWindow();
+    KeyboardUtils.hideSoftInput(this);
+}
+</code></pre><p>如果你对键盘按键的UI定制需求强烈的话，你可以通过重写<code>KeyboardView</code>的<code>onDraw()</code>方法，遍历<code>keyboard.getKeys()</code>进行自定义</p>
+<blockquote>
+<p>相关代码在GitHub上:<a href="https://github.com/dulexu/KeyboardDemo" target="_blank" rel="noopener">github</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.jinwenqi.top/2018/01/19/发送验证码倒计时功能/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lexu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乐胥的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/19/发送验证码倒计时功能/" itemprop="url">发送验证码倒计时功能</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T00:36:11+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/19/发送验证码倒计时功能/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/19/发送验证码倒计时功能/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/19/发送验证码倒计时功能/" class="leancloud_visitors" data-flag-title="发送验证码倒计时功能">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="CountDownTimer类介绍"><a href="#CountDownTimer类介绍" class="headerlink" title="CountDownTimer类介绍"></a>CountDownTimer类介绍</h4><p><code>CountDownTimer</code>类比较简单，总共就一个构造和4个方法。内部是通过handler实现。</p>
+<p><code>CountDownTimer(long time,long interval)</code> 参数time是总时间，interval是间隔时间。</p>
+<p><code>start()</code> 开始倒计时的方法。</p>
+<p><code>cancel()</code> 取消倒计时的方法。</p>
+<p><code>onTink(long time)</code> 抽象方法，每个间隔时间一到就会调用一次。参数time是指剩下的时间。</p>
+<p><code>onFinish()</code> 抽象方法，倒计时完成的方法。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>//手机号正则
+String pattern = &quot;^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8])|(19[7]))\\d{8}$&quot;;
+private void sendSMS() {
+    String number = etInputNumber.getText().toString().trim();
+    if (TextUtils.isEmpty(number)){
+        ToastUtil.show(getActivity(),&quot;手机号不能为空&quot;);
+        return;
+    }else if (number.matches(pattern)){
+        //调用短信API
+        presenter.sendSMS(number);
+        btnPayPswSendSms.setEnabled(false);
+        //启动倒计时
+        downTimer.start();
+    }else {
+        ToastUtil.show(getActivity(),&quot;手机号格式不正确&quot;);
+    }
+}
+
+private CountDownTimer downTimer = new CountDownTimer(60000,1000) {
+    //每隔1秒调用1次
+    @Override
+    public void onTick(long l) {
+        btnPayPswSendSms.setText((l / 1000) + &quot;秒&quot;);
+    }
+    //倒计时结束调用
+    @Override
+    public void onFinish() {
+        btnPayPswSendSms.setEnabled(true);
+        btnPayPswSendSms.setText(&quot;重新发送&quot;);
+    }
+};
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.jinwenqi.top/2018/01/18/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lexu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乐胥的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/18/hello-world/" itemprop="url">Hello World</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T21:10:57+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/18/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/18/hello-world/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/18/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="Lexu" />
+            
+              <p class="site-author-name" itemprop="name">Lexu</p>
+              <p class="site-description motion-element" itemprop="description">Android Developer</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lexu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://lexu.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("aJKOGpPfhpNF4CSFEDdP5hc0-gzGzoHsz", "KIUDqi59dHfimQ82Uvwmo9D4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
