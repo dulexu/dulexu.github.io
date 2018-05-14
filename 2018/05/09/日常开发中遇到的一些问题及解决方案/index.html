@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="乐胥的个人博客">
 <meta property="og:description" content="日常开发中遇到的一些问题及解决方案Android Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。 FAB 隐藏后不显示Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.A">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-14T13:08:30.557Z">
+<meta property="og:updated_time" content="2018-05-14T13:20:02.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="乐胥的个人博客">
 <meta name="twitter:description" content="日常开发中遇到的一些问题及解决方案Android Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。 FAB 隐藏后不显示Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.A">
@@ -387,20 +387,20 @@
       
         <h1 id="日常开发中遇到的一些问题及解决方案"><a href="#日常开发中遇到的一些问题及解决方案" class="headerlink" title="日常开发中遇到的一些问题及解决方案"></a>日常开发中遇到的一些问题及解决方案</h1><h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><ol>
 <li>Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。</li>
-<li>FAB 隐藏后不显示<br>Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.<br>A quick workaround here is setting the FAB’s visibility to INVISIBLE at the end of the FAB’s hide animation.</li>
-</ol>
-<p><code>if (dyConsumed &gt; 0 &amp;&amp; child.getVisibility() == View.VISIBLE) {
-        child.hide(new FloatingActionButton.OnVisibilityChangedListener() {
-            @Override
-            public void onHidden(FloatingActionButton fab) {
-                super.onHidden(fab);
-                fab.setVisibility(View.INVISIBLE);
-            }
-        });
-    } else if (dyConsumed &lt; 0 &amp;&amp; child.getVisibility() != View.VISIBLE) {
-        child.show();
-    }</code></p>
-<ol>
+<li><p>FAB 隐藏后不显示<br>Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.<br>A quick workaround here is setting the FAB’s visibility to INVISIBLE at the end of the FAB’s hide animation.</p>
+<pre><code>if(dyConsumed&gt;0&amp;&amp;child.getVisibility()==View.VISIBLE) {
+    child.hide(new FloatingActionButton.OnVisibilityChangedListener() {
+        @Override
+        public void onHidden(FloatingActionButton fab) {
+            super.onHidden(fab);
+            fab.setVisibility(View.INVISIBLE);
+        }
+    });
+}else if(dyConsumed&lt;0&amp;&amp;child.getVisibility()!=View.VISIBLE){
+    child.show();
+}
+</code></pre><p>`</p>
+</li>
 <li>RecyclerView 快速滑动到顶部<br>创建FastScrollLinearLayoutManager，继承LinearLayoutManager<br>复写smoothScrollToPosition()方法，主要复写LinearSmoothScroller中方法</li>
 </ol>
 <pre><code>public class FastScrollLinearLayoutManager extends LinearLayoutManager {
@@ -465,78 +465,84 @@
 </code></pre><p>从复写的两个方法可以看出，都是为了提高滑动速度。一种是直接修改速度，另外一种是通过减少距离来减少所需时间，间接提高滑动速度。</p>
 <ul>
 <li><p>RecyclerView 滑动过程梳理<br>1.调用RecyclerView.smoothScrollToPosition(position)时</p>
-<p>  public void smoothScrollToPosition(int position) {</p>
+<p>  `public void smoothScrollToPosition(int position) {</p>
 <pre><code>//...直接调用了LayoutManager的该方法
 mLayout.smoothScrollToPosition(this, mState, position);
-</code></pre><p>  }<br>2.LinearLayoutManager中</p>
-<p>  @Override<br>  public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state,</p>
-<pre><code>    int position) {
-LinearSmoothScroller linearSmoothScroller = new  LinearSmoothScroller(recyclerView.getContext()) {
-          //...
-        };
-//设置终点位置
-linearSmoothScroller.setTargetPosition(position);
-//开始滚动，使用LinearSmoothScroller(一直匀速滑动，当targetPosition出现在屏幕上时再减速滑动)，startSmoothScroll()是LayoutManager中的方法
-startSmoothScroll(linearSmoothScroller);
-</code></pre><p>  }<br>3.LayoutManager中</p>
-<p>  public void startSmoothScroll(SmoothScroller smoothScroller) {</p>
-<pre><code>//...
-mSmoothScroller = smoothScroller;
-//调用SmoothScroller.start()方法开始滚动,this参数指当前LayoutManager
-mSmoothScroller.start(mRecyclerView, this);
-</code></pre><p>  }<br>4.SmoothScroller中</p>
-<p>  void start(RecyclerView recyclerView, LayoutManager layoutManager) {</p>
-<pre><code>//...
-//使用ViewFlinger进行动画，ViewFlinger实现了Runnable接口，并且内部使用了Scroller，这样就可以post自己进而对RecyclerView不断layout就可以实现滑动
-mRecyclerView.mViewFlinger.postOnAnimation();
-</code></pre><p>  }<br>5.ViewFlinger中，这是实现滑动的重点,省略了很多代码逻辑</p>
-<p>  private class ViewFlinger implements Runnable {</p>
-<pre><code>@Override
-public void run() {
-   if (scroller.computeScrollOffset()) {
-       //调用SmoothScroller的onAnimation方法
-       smoothScroller.onAnimation(dx - overscrollX, dy - overscrollY);
-   }
-}
-</code></pre><p>  }<br>6.SmoothScroller中</p>
-<p>  private void onAnimation(int dx, int dy) {</p>
-<pre><code>//...
-if (mTargetView != null) {
-    // verify target position
-    if (getChildPosition(mTargetView) == mTargetPosition) {
-        //要滑动到的位置已经显示在屏幕上，onTargetFound()方法里update了差值器，由线性差值器变成了减速的差值器。
-        onTargetFound(mTargetView, recyclerView.mState, mRecyclingAction);
-         mRecyclingAction.runIfNecessary(recyclerView);
-     }
-
-     //...
-
-    if (mRunning) {
-        //再下一次滑动
-        onSeekTargetStep(dx, dy, recyclerView.mState, mRecyclingAction);
-        //调用内部类Action的runIfNecessary方法
-        mRecyclingAction.runIfNecessary(recyclerView);
-        }
-    }
-</code></pre><p>7.Action中</p>
-<p>  private void runIfNecessary(RecyclerView recyclerView) {</p>
-<pre><code>//调用了ViewFlinger.smoothScrollBy()方法，并传入了mDuration，mDuration是在SmoothScroller中upDate()时传入的，就是由前文讲的两个方法共同决定的
-recyclerView.mViewFlinger.smoothScrollBy(mDx, mDy, mDuration, mInterpolator);
-</code></pre><p>  }<br>8.ViewFlinger中开始滚动</p>
-<p>  public void smoothScrollBy(int dx, int dy, int duration, Interpolator interpolator) {</p>
-<pre><code>    if (mInterpolator != interpolator) {
-        mInterpolator = interpolator;
-        mScroller = ScrollerCompat.create(getContext(), interpolator);
-    }
-    setScrollState(SCROLL_STATE_SETTLING);
-    mLastFlingX = mLastFlingY = 0;
-    //调用Scroller开始滚动，此处即duration
-    mScroller.startScroll(0, 0, dx, dy, duration);
-    postOnAnimation();
-}
-</code></pre><p>这块粗略的按照流程说了一下滚动过程，涉及的类比较多，最终通过Scroller来进行滚动。</p>
+</code></pre><p>  }`</p>
 </li>
 </ul>
+<p>2.LinearLayoutManager中</p>
+<pre><code>@Override
+public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state,int position) {
+    LinearSmoothScroller linearSmoothScroller = new  LinearSmoothScroller(recyclerView.getContext()) {
+              //...
+            };
+    //设置终点位置
+    linearSmoothScroller.setTargetPosition(position);
+    //开始滚动，使用LinearSmoothScroller(一直匀速滑动，当targetPosition出现在屏幕上时再减速滑动)，startSmoothScroll()是LayoutManager中的方法
+    startSmoothScroll(linearSmoothScroller);
+}
+</code></pre><p>3.LayoutManager中</p>
+<pre><code>public void startSmoothScroll(SmoothScroller smoothScroller) {
+     //...
+     mSmoothScroller = smoothScroller;
+     //调用SmoothScroller.start()方法开始滚动,this参数指当前LayoutManager
+     mSmoothScroller.start(mRecyclerView, this);
+}
+</code></pre><p>4.SmoothScroller中</p>
+<pre><code>void start(RecyclerView recyclerView, LayoutManager layoutManager) {
+    //...
+    //使用ViewFlinger进行动画，ViewFlinger实现了Runnable接口，并且内部使用了Scroller，这样就可以post自己进而对RecyclerView不断layout就可以实现滑动
+    mRecyclerView.mViewFlinger.postOnAnimation();
+}
+</code></pre><p>5.ViewFlinger中，这是实现滑动的重点,省略了很多代码逻辑</p>
+<pre><code>private class ViewFlinger implements Runnable {
+     @Override
+     public void run() {
+        if (scroller.computeScrollOffset()) {
+            //调用SmoothScroller的onAnimation方法
+            smoothScroller.onAnimation(dx - overscrollX, dy - overscrollY);
+        }
+     }
+}
+</code></pre><p>6.SmoothScroller中</p>
+<pre><code>private void onAnimation(int dx, int dy) {
+    //...
+    if (mTargetView != null) {
+        // verify target position
+        if (getChildPosition(mTargetView) == mTargetPosition) {
+            //要滑动到的位置已经显示在屏幕上，onTargetFound()方法里update了差值器，由线性差值器变成了减速的差值器。
+            onTargetFound(mTargetView, recyclerView.mState, mRecyclingAction);
+             mRecyclingAction.runIfNecessary(recyclerView);
+         }
+
+         //...
+
+        if (mRunning) {
+            //再下一次滑动
+            onSeekTargetStep(dx, dy, recyclerView.mState, mRecyclingAction);
+            //调用内部类Action的runIfNecessary方法
+            mRecyclingAction.runIfNecessary(recyclerView);
+            }
+        }
+</code></pre><p>7.Action中</p>
+<pre><code>private void runIfNecessary(RecyclerView recyclerView) {
+    //调用了ViewFlinger.smoothScrollBy()方法，并传入了mDuration，mDuration是在SmoothScroller中upDate()时传入的，就是由前文讲的两个方法共同决定的
+    recyclerView.mViewFlinger.smoothScrollBy(mDx, mDy, mDuration, mInterpolator);
+}
+</code></pre><p>8.ViewFlinger中开始滚动</p>
+<pre><code>public void smoothScrollBy(int dx, int dy, int duration, Interpolator interpolator) {
+            if (mInterpolator != interpolator) {
+                mInterpolator = interpolator;
+                mScroller = ScrollerCompat.create(getContext(), interpolator);
+            }
+            setScrollState(SCROLL_STATE_SETTLING);
+            mLastFlingX = mLastFlingY = 0;
+            //调用Scroller开始滚动，此处即duration
+            mScroller.startScroll(0, 0, dx, dy, duration);
+            postOnAnimation();
+        }
+</code></pre><p>这块粗略的按照流程说了一下滚动过程，涉及的类比较多，最终通过Scroller来进行滚动。</p>
 <h3 id="JavaWeb"><a href="#JavaWeb" class="headerlink" title="JavaWeb"></a>JavaWeb</h3><ol>
 <li>Tomcat的server.xml文件中<br><code>&lt;Context path=&quot;/pic&quot; docBase=&quot;C:\file\vanessa\pic&quot;/&gt;</code><br><code>path</code> 代表访问路径，<code>docBase</code> 代表真实路径。</li>
 <li>Tomcat部署好项目后，内网可以访问，外网访问不了<br>关闭防火墙并在安全组中开放相应端口</li>
