@@ -389,75 +389,17 @@
       
         
           
-            <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。</p>
-<h4 id="单例模式有以下特点："><a href="#单例模式有以下特点：" class="headerlink" title="单例模式有以下特点："></a>单例模式有以下特点：</h4><p>　　1. 单例类只能有一个实例。<br>　　2. 单例类必须自己创建自己的唯一实例。<br>　3. 单例类必须给所有其他对象提供这一实例。</p>
-<h3 id="一、懒汉式单例"><a href="#一、懒汉式单例" class="headerlink" title="一、懒汉式单例"></a>一、懒汉式单例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//懒汉式单例类.在第一次调用的时候实例化自己   </span><br><span class="line">	public class Singleton &#123;  </span><br><span class="line">	    private Singleton() &#123;&#125;  </span><br><span class="line">	    private static Singleton single=null;  </span><br><span class="line">	    //静态工厂方法   </span><br><span class="line">	    public static Singleton getInstance() &#123;  </span><br><span class="line">	         if (single == null) &#123;    </span><br><span class="line">	             single = new Singleton();  </span><br><span class="line">	         &#125;    </span><br><span class="line">	        return single;  </span><br><span class="line">	    &#125;  </span><br><span class="line">	&#125;  </span><br></pre></td></tr></table></figure>
-<p>   Singleton通过将构造方法限定为private避免了类在外部被实例化，在同一个虚拟机范围内，Singleton的唯一实例只能通过getInstance()方法访问。<br>（事实上，通过Java反射机制是能够实例化构造方法为private的类的，那基本上会使所有的Java单例实现失效。此问题在此处不做讨论，姑且掩耳盗铃地认为反射机制不存在。）</p>
-<p>但是以上懒汉式单例的实现没有考虑线程安全问题，它是线程不安全的，并发环境下很可能出现多个Singleton实例，要实现线程安全，有以下三种方式，都是对getInstance这个方法改造，保证了懒汉式单例的线程安全，如果你第一次接触单例模式，对线程安全不是很了解，可以先跳过下面这三小条，去看饿汉式单例，等看完后面再回头考虑线程安全的问题：</p>
-<ol>
-<li><p>在getInstance方法上加同步</p>
-<p> public static synchronized Singleton getInstance() {  </p>
-<pre><code>if (single == null) {    
-    single = new Singleton();  
-}    
-return single;  
-</code></pre><p> }  </p>
-</li>
-<li><p>双重检查锁定</p>
-<p> public static Singleton getInstance() {  </p>
-<pre><code>if (singleton == null) {    
-    synchronized (Singleton.class) {    
-       if (singleton == null) {    
-          singleton = new Singleton();   
-       }    
-    }    
-}    
-return singleton;   
-</code></pre><p> }  </p>
-</li>
-<li><p>静态内部类</p>
-<p> public class Singleton {    </p>
-<pre><code>private static class LazyHolder {    
-   private static final Singleton INSTANCE = new Singleton();    
-}    
-private Singleton (){}    
-public static final Singleton getInstance() {    
-   return LazyHolder.INSTANCE;    
-}    
-</code></pre><p> }  </p>
-</li>
-</ol>
-<p>这种比上面1、2都好一些，既实现了线程安全，又避免了同步带来的性能影响。</p>
-<h3 id="二、饿汉式单例"><a href="#二、饿汉式单例" class="headerlink" title="二、饿汉式单例"></a>二、饿汉式单例</h3><pre><code>//饿汉式单例类.在类初始化时，已经自行实例化   
-public class Singleton1 {  
-    private Singleton1() {}  
-    private static final Singleton1 single = new Singleton1();  
-    //静态工厂方法   
-    public static Singleton1 getInstance() {  
-        return single;  
-    }  
-}  
-</code></pre><p>饿汉式在类创建的同时就已经创建好一个静态的对象供系统使用，以后不再改变，所以天生是线程安全的。</p>
-<h3 id="饿汉式和懒汉式区别"><a href="#饿汉式和懒汉式区别" class="headerlink" title="饿汉式和懒汉式区别"></a>饿汉式和懒汉式区别</h3><p>从名字上来说，饿汉和懒汉，</p>
-<p>饿汉就是类一旦加载，就把单例初始化完成，保证getInstance的时候，单例是已经存在的了，</p>
-<p>而懒汉比较懒，只有当调用getInstance的时候，才回去初始化这个单例。</p>
-<p>另外从以下两点再区分以下这两种方式：</p>
-<ol>
-<li>线程安全：<br>饿汉式天生就是线程安全的，可以直接用于多线程而不会出现问题，</li>
-</ol>
-<p>懒汉式本身是非线程安全的，为了实现线程安全有几种写法，分别是上面的1、2、3，这三种实现在资源加载和性能方面有些区别。</p>
-<ol>
-<li>资源加载和性能：<br>饿汉式在类创建的同时就实例化一个静态对象出来，不管之后会不会使用这个单例，都会占据一定的内存，但是相应的，在第一次调用时速度也会更快，因为其资源已经初始化完成，</li>
-</ol>
-<p>而懒汉式顾名思义，会延迟加载，在第一次使用该单例的时候才会实例化对象出来，第一次调用时要做初始化，如果要做的工作比较多，性能上会有些延迟，之后就和饿汉式一样了。</p>
-<p>至于1、2、3这三种实现又有些区别，</p>
-<p>第1种，在方法调用上加了同步，虽然线程安全了，但是每次都要同步，会影响性能，毕竟99%的情况下是不需要同步的，</p>
-<p>第2种，在getInstance中做了两次null检查，确保了只有第一次调用单例的时候才会做同步，这样也是线程安全的，同时避免了每次都同步的性能损耗</p>
-<p>第3种，利用了classloader的机制来保证初始化instance时只有一个线程，所以也是线程安全的，同时没有性能损耗，所以一般我倾向于使用这一种。</p>
-<h3 id="什么是线程安全？"><a href="#什么是线程安全？" class="headerlink" title="什么是线程安全？"></a>什么是线程安全？</h3><p>如果你的代码所在的进程中有多个线程在同时运行，而这些线程可能会同时运行这段代码。如果每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，就是线程安全的。</p>
-<p>或者说：一个类或者程序所提供的接口对于线程来说是原子操作，或者多个线程之间的切换不会导致该接口的执行结果存在二义性,也就是说我们不用考虑同步的问题，那就是线程安全的。</p>
-
-          
+          概念　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。
+单例模式有以下特点：　　1. 单例类只能有一个实例。　　2. 单例类必须自己创建自己的唯一实例。　3. 单例类必须给所有其他对象提供这一实例。
+一、懒汉式单例12345
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/23/单例模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -597,178 +539,17 @@ public class Singleton1 {
       
         
           
-            <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><ol>
-<li>Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。</li>
-<li><p>FAB 隐藏后不显示<br>Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.<br>A quick workaround here is setting the FAB’s visibility to INVISIBLE at the end of the FAB’s hide animation.</p>
-<pre><code>if(dyConsumed&gt;0&amp;&amp;child.getVisibility()==View.VISIBLE) {
-    child.hide(new FloatingActionButton.OnVisibilityChangedListener() {
-        @Override
-        public void onHidden(FloatingActionButton fab) {
-            super.onHidden(fab);
-            fab.setVisibility(View.INVISIBLE);
-        }
-    });
-}else if(dyConsumed&lt;0&amp;&amp;child.getVisibility()!=View.VISIBLE){
-    child.show();
-}
-</code></pre><p>`</p>
-</li>
-<li>RecyclerView 快速滑动到顶部<br>创建FastScrollLinearLayoutManager，继承LinearLayoutManager<br>复写smoothScrollToPosition()方法，主要复写LinearSmoothScroller中方法</li>
-</ol>
-<pre><code>public class FastScrollLinearLayoutManager extends LinearLayoutManager {
-    public FastScrollLinearLayoutManager(Context context) {
-        super(context);
-    }
-
-    @Override
-    public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state, int position) {
-       LinearSmoothScroller linearSmoothScroller = new LinearSmoothScroller(recyclerView.getContext()) {
-
-            @Override 
-            public PointF computeScrollVectorForPosition(int targetPosition) {
-                return  FastScrollLinearLayoutManager.this.computeScrollVectorForPosition(targetPosition);
-            }
-
-            //该方法控制速度。
-            //if returned value is 2 ms, it means scrolling 1000 pixels with LinearInterpolation should take 2 seconds.
-            @Override 
-            protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
-                /*
-                     控制单位速度,  毫秒/像素, 滑动1像素需要多少毫秒.
-
-                     默认为 (25F/densityDpi) 毫秒/像素
-
-                     mdpi上, 1英寸有160个像素点, 25/160,
-                     xxhdpi,1英寸有480个像素点, 25/480,
-                  */
-
-                  //return 10F / displayMetrics.densityDpi;//可以减少时间，默认25F
-                 return super.calculateSpeedPerPixel(displayMetrics);
-            }
-
-           //该方法计算滑动所需时间。在此处间接控制速度。
-           //Calculates the time it should take to scroll the given distance (in pixels)
-           @Override 
-           protected int calculateTimeForScrolling(int dx) {
-               /*
-                   控制距离, 然后根据上面那个方(calculateSpeedPerPixel())提供的速度算出时间,
-
-                   默认一次 滚动 TARGET_SEEK_SCROLL_DISTANCE_PX = 10000个像素,
-
-                   在此处可以减少该值来达到减少滚动时间的目的.
-                */
-
-                //间接计算时提高速度，也可以直接在calculateSpeedPerPixel提高
-                if (dx &gt; 3000) {
-                    dx = 3000;
-                }
-
-                int time = super.calculateTimeForScrolling(dx);
-                LogUtil.d(time);//打印时间看下
-
-                return time;
-            }
-        };
-
-        linearSmoothScroller.setTargetPosition(position);
-        startSmoothScroll(linearSmoothScroller);
-    }
-}
-</code></pre><p>从复写的两个方法可以看出，都是为了提高滑动速度。一种是直接修改速度，另外一种是通过减少距离来减少所需时间，间接提高滑动速度。</p>
-<ul>
-<li><p>RecyclerView 滑动过程梳理<br>1.调用RecyclerView.smoothScrollToPosition(position)时</p>
-<p>  `public void smoothScrollToPosition(int position) {</p>
-<pre><code>//...直接调用了LayoutManager的该方法
-mLayout.smoothScrollToPosition(this, mState, position);
-</code></pre><p>  }`</p>
-</li>
-</ul>
-<p>2.LinearLayoutManager中</p>
-<pre><code>@Override
-public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state,int position) {
-    LinearSmoothScroller linearSmoothScroller = new  LinearSmoothScroller(recyclerView.getContext()) {
-              //...
-            };
-    //设置终点位置
-    linearSmoothScroller.setTargetPosition(position);
-    //开始滚动，使用LinearSmoothScroller(一直匀速滑动，当targetPosition出现在屏幕上时再减速滑动)，startSmoothScroll()是LayoutManager中的方法
-    startSmoothScroll(linearSmoothScroller);
-}
-</code></pre><p>3.LayoutManager中</p>
-<pre><code>public void startSmoothScroll(SmoothScroller smoothScroller) {
-     //...
-     mSmoothScroller = smoothScroller;
-     //调用SmoothScroller.start()方法开始滚动,this参数指当前LayoutManager
-     mSmoothScroller.start(mRecyclerView, this);
-}
-</code></pre><p>4.SmoothScroller中</p>
-<pre><code>void start(RecyclerView recyclerView, LayoutManager layoutManager) {
-    //...
-    //使用ViewFlinger进行动画，ViewFlinger实现了Runnable接口，并且内部使用了Scroller，这样就可以post自己进而对RecyclerView不断layout就可以实现滑动
-    mRecyclerView.mViewFlinger.postOnAnimation();
-}
-</code></pre><p>5.ViewFlinger中，这是实现滑动的重点,省略了很多代码逻辑</p>
-<pre><code>private class ViewFlinger implements Runnable {
-     @Override
-     public void run() {
-        if (scroller.computeScrollOffset()) {
-            //调用SmoothScroller的onAnimation方法
-            smoothScroller.onAnimation(dx - overscrollX, dy - overscrollY);
-        }
-     }
-}
-</code></pre><p>6.SmoothScroller中</p>
-<pre><code>private void onAnimation(int dx, int dy) {
-    //...
-    if (mTargetView != null) {
-        // verify target position
-        if (getChildPosition(mTargetView) == mTargetPosition) {
-            //要滑动到的位置已经显示在屏幕上，onTargetFound()方法里update了差值器，由线性差值器变成了减速的差值器。
-            onTargetFound(mTargetView, recyclerView.mState, mRecyclingAction);
-             mRecyclingAction.runIfNecessary(recyclerView);
-         }
-
-         //...
-
-        if (mRunning) {
-            //再下一次滑动
-            onSeekTargetStep(dx, dy, recyclerView.mState, mRecyclingAction);
-            //调用内部类Action的runIfNecessary方法
-            mRecyclingAction.runIfNecessary(recyclerView);
-            }
-        }
-</code></pre><p>7.Action中</p>
-<pre><code>private void runIfNecessary(RecyclerView recyclerView) {
-    //调用了ViewFlinger.smoothScrollBy()方法，并传入了mDuration，mDuration是在SmoothScroller中upDate()时传入的，就是由前文讲的两个方法共同决定的
-    recyclerView.mViewFlinger.smoothScrollBy(mDx, mDy, mDuration, mInterpolator);
-}
-</code></pre><p>8.ViewFlinger中开始滚动</p>
-<pre><code>public void smoothScrollBy(int dx, int dy, int duration, Interpolator interpolator) {
-            if (mInterpolator != interpolator) {
-                mInterpolator = interpolator;
-                mScroller = ScrollerCompat.create(getContext(), interpolator);
-            }
-            setScrollState(SCROLL_STATE_SETTLING);
-            mLastFlingX = mLastFlingY = 0;
-            //调用Scroller开始滚动，此处即duration
-            mScroller.startScroll(0, 0, dx, dy, duration);
-            postOnAnimation();
-        }
-</code></pre><p>这块粗略的按照流程说了一下滚动过程，涉及的类比较多，最终通过Scroller来进行滚动。</p>
-<h3 id="JavaWeb"><a href="#JavaWeb" class="headerlink" title="JavaWeb"></a>JavaWeb</h3><ol>
-<li>Tomcat的server.xml文件中<br><code>&lt;Context path=&quot;/pic&quot; docBase=&quot;C:\file\vanessa\pic&quot;/&gt;</code><br><code>path</code> 代表访问路径，<code>docBase</code> 代表真实路径。</li>
-<li>Tomcat部署好项目后，内网可以访问，外网访问不了<br>关闭防火墙并在安全组中开放相应端口</li>
-</ol>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ol>
-<li>服务器搭建好VPN后，手机可以连接，PC(win10)却连不上<br>查看ipsec policy agent服务是否开启<br>然后在注册表添加两条信息 regedit<br>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Rasman\Parameters</li>
-</ol>
-<ul>
-<li>在编辑菜单上，指向新建，然后单击DWORD 值。<br>键入ProhibitIpSec，然后按 enter 键。<br>在编辑菜单上，单击修改。<br>在数值数据框中，键入1，然后单击确定。</li>
-<li>点击allowL2TPweakcryphto<br>　　修改值为1<br>点击文件 退出</li>
-</ul>
-<p>重启计算机</p>
-
-          
+          Android
+Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。
+FAB 隐藏后不显示Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to cal
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/09/日常开发中遇到的一些问题及解决方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -908,350 +689,17 @@ public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State
       
         
           
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>   很简单，只需要用到系统提供了两个类<code>Keyboard</code>和<code>KeyboardView</code>，把写好键盘布局文件送到键盘类中，就可以实现相应的自定义功能。</p>
-<h3 id="键盘布局"><a href="#键盘布局" class="headerlink" title="键盘布局"></a>键盘布局</h3><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;Keyboard xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-android:horizontalGap=&quot;0px&quot;
-android:verticalGap=&quot;0px&quot;
-android:keyHeight=&quot;7.5%p&quot;
-android:keyWidth=&quot;30%p&quot;&gt;
-
-&lt;Row android:verticalGap=&quot;1%p&quot;&gt;
-    &lt;Key
-        android:codes=&quot;49&quot;
-        android:keyLabel=&quot;1&quot;
-        android:horizontalGap=&quot;2%p&quot;/&gt;
-    &lt;Key
-        android:codes=&quot;50&quot;
-        android:keyLabel=&quot;2&quot;
-        android:horizontalGap=&quot;2%p&quot;/&gt;
-    &lt;Key
-        android:codes=&quot;51&quot;
-        android:keyLabel=&quot;3&quot;
-        android:horizontalGap=&quot;2%p&quot;/&gt;
-&lt;/Row&gt;
-&lt;Row&gt;
-    &lt;Key
-        android:codes=&quot;-2&quot;
-        android:keyLabel=&quot;abc&quot;
-        android:horizontalGap=&quot;2%p&quot;/&gt;
-    &lt;Key
-        android:codes=&quot;48&quot;
-        android:keyLabel=&quot;0&quot;
-        android:horizontalGap=&quot;2%p&quot;/&gt;
-    &lt;Key
-        android:codes=&quot;-5&quot;
-        android:isRepeatable=&quot;true&quot;
-        android:keyIcon=&quot;@mipmap/ic_delete&quot;
-        android:horizontalGap=&quot;2%p&quot;/&gt;
-&lt;/Row&gt;
-&lt;/Keyboard&gt;
-</code></pre><p><img src="https://i.imgur.com/XDAvsin.png" alt="键盘按键布局"></p>
-<p>每一个按键的宽高对应的属性是<code>android:keyWidth</code>、<code>android:keyHeight</code>，行与行之间的间隙（下方间隙）可以用<code>android:vertical</code>，列与列之间的*（左方间隙）是<code>Gapandroid:horizontalGap</code>。<br>按键的换行用<code>Row</code>来处理，每一个按键<code>Key</code>都在其中，其中<code>android:keyLabel</code>是按键上的文字，<code>android:codes</code>是在<code>EditText</code>上输出的文字。注意一下这个<code>codes</code>值不能随便填字符串，它一般是unicode值，像我上面48对应的是十进制的0，这些你对照ASCII表就行，如果你想输出真正的字符串，则需要用属性<code>keyOutputText</code>。你想按键不要文字而放置图片，可以使用<code>android:keyIcon</code>属性。要想实现删除键那种长按连续删除可以使用<code>android:isRepeatable</code>属性<br>这里宽高、间距的单位既可以是像素，英寸等，也可以是相对于基础取值的百分比，以%p结尾。我建议开发过程中使用百分比单位比较好，毕竟屏幕适配还是百分比布局最稳妥。</p>
-<p>按键的布局放置在<code>res/xml</code>文件夹下</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;Keyboard xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-android:horizontalGap=&quot;0px&quot;
-android:verticalGap=&quot;0px&quot;
-android:keyHeight=&quot;7.5%p&quot;
-android:keyWidth=&quot;30%p&quot;&gt;
-&lt;Row android:verticalGap=&quot;1%p&quot;&gt;
-    &lt;Key
-        android:codes=&quot;49&quot;
-        android:keyLabel=&quot;1&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-    &lt;Key
-        android:codes=&quot;50&quot;
-        android:keyLabel=&quot;2&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-    &lt;Key
-        android:codes=&quot;51&quot;
-        android:keyLabel=&quot;3&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-&lt;/Row&gt;
-&lt;Row android:verticalGap=&quot;1%p&quot;&gt;
-    &lt;Key
-        android:codes=&quot;52&quot;
-        android:keyLabel=&quot;4&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-    &lt;Key
-        android:codes=&quot;53&quot;
-        android:keyLabel=&quot;5&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-    &lt;Key
-        android:codes=&quot;54&quot;
-        android:keyLabel=&quot;6&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-&lt;/Row&gt;
-&lt;Row android:verticalGap=&quot;1%p&quot;&gt;
-    &lt;Key
-        android:codes=&quot;55&quot;
-        android:keyLabel=&quot;7&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-    &lt;Key
-        android:codes=&quot;56&quot;
-        android:keyLabel=&quot;8&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-    &lt;Key
-        android:codes=&quot;57&quot;
-        android:keyLabel=&quot;9&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-&lt;/Row&gt;
-&lt;Row&gt;
-    &lt;Key
-        android:codes=&quot;-2&quot;
-        android:keyLabel=&quot;abc&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-    &lt;Key
-        android:codes=&quot;48&quot;
-        android:keyLabel=&quot;0&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-    &lt;Key
-        android:codes=&quot;-5&quot;
-        android:isRepeatable=&quot;true&quot;
-        android:keyIcon=&quot;@mipmap/ic_delete&quot;
-        android:horizontalGap=&quot;2%p&quot;&gt;
-
-    &lt;/Key&gt;
-&lt;/Row&gt;
-&lt;/Keyboard&gt;
-</code></pre><p>键盘的布局文件</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;android.inputmethodservice.KeyboardView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-android:layout_width=&quot;match_parent&quot; android:layout_height=&quot;wrap_content&quot;
-android:id=&quot;@+id/view_keyboard&quot;
-android:background=&quot;#999999&quot;
-android:focusable=&quot;true&quot;
-android:focusableInTouchMode=&quot;true&quot;
-android:keyBackground=&quot;@drawable/selector_keyboard_key&quot;
-android:keyPreviewHeight=&quot;64dip&quot;
-android:keyPreviewLayout=&quot;@layout/view_keyboard_preview&quot;
-android:keyTextColor=&quot;@android:color/black&quot;
-android:keyTextSize=&quot;24sp&quot;
-android:labelTextSize=&quot;18sp&quot;
-android:paddingTop=&quot;8dip&quot;
-android:paddingBottom=&quot;8dip&quot;
-android:shadowColor=&quot;#FFFFFF&quot;
-android:shadowRadius=&quot;0.0&quot;
-android:visibility=&quot;gone&quot;/&gt;
-</code></pre><p><code>android:keyBackground</code>：键盘背景图<br><code>android:keyPreviewLayout</code>：键盘点击时候预览图的布局，我这里是一个TextView。预览图就是点击按键后短暂弹出的提示布局文件</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;TextView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot;
-android:background=&quot;@android:color/holo_red_light&quot;
-android:textColor=&quot;@android:color/white&quot;
-android:gravity=&quot;center&quot;
-android:textSize=&quot;24sp&quot;/&gt;
-</code></pre><p><code>android:keyPreviewHeight</code>：键盘点击时候预览图的高度<br><code>android:keyTextColor</code>：按键文字的颜色<br><code>android:keyTextSize</code>：按键文字大小<br><code>android:labelTextSize</code>：如果同时设置了文字+图片的按键，用这个属性进行设置。这边我比较纳闷，明明文字加图表不能同时在按键上显示，这个属性意义应该不能这么理解了吧<br><code>android:shadowColor android:shadowRadius</code>：没有这两个属性，按键上文字会发虚模糊</p>
-<p>最后来看看键盘摆放位置，在相对布局的最底下，默认隐藏</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-xmlns:tools=&quot;http://schemas.android.com/tools&quot;
-android:layout_width=&quot;match_parent&quot;
-android:layout_height=&quot;match_parent&quot;
-tools:context=&quot;com.renyu.keyboarddemo.MainActivity&quot;&gt;
-&lt;LinearLayout
-    android:id=&quot;@+id/layout_root&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;wrap_content&quot;
-    android:orientation=&quot;vertical&quot;&gt;
-    &lt;View
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;400dip&quot;&gt;&lt;/View&gt;
-    &lt;com.renyu.keyboarddemo.KeyBoardEditText
-        android:id=&quot;@+id/ed_main&quot;
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;50dip&quot;
-        android:background=&quot;@android:color/holo_orange_dark&quot;/&gt;
-&lt;/LinearLayout&gt;
-&lt;LinearLayout
-    android:id=&quot;@+id/layout_main&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;wrap_content&quot;
-    android:orientation=&quot;vertical&quot;
-    android:layout_alignParentBottom=&quot;true&quot;
-    android:background=&quot;#999999&quot;
-    android:visibility=&quot;gone&quot;&gt;
-    &lt;include layout=&quot;@layout/content_keyboard&quot;&gt;&lt;/include&gt;
-&lt;/LinearLayout&gt;
-&lt;/RelativeLayout&gt;
-</code></pre><h3 id="键盘功能"><a href="#键盘功能" class="headerlink" title="键盘功能"></a>键盘功能</h3><p>键盘按键输出处理用<code>EditText</code>，流程是初始化好一个<code>Keyboard</code>类，然后将该类赋值到<code>keyboardView</code>上，同时设置<code>KeyboardView.OnKeyboardActionListener</code>来处理相应的按键回调事件</p>
-<p>初始化键盘，这里得到字母键盘与数字键盘</p>
-<pre><code>private void initEditView() {
-    mkeyboardLetter = new Keyboard(mContext, R.xml.keyboard_letter);
-    mKeyboardNumber = new Keyboard(mContext, R.xml.keyboard_number);
-}
-</code></pre><p>然后添加按键回调</p>
-<pre><code>     mKeyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
-        // 当用户按下一个键时调用。在调用onKey之前调用。如果之前定义的codes有问题，primaryCode为0
-        @Override
-        public void onPress(int primaryCode) {
-            canShowPreview(primaryCode);
-        }
-
-        // 当用户释放键时调用
-        @Override
-        public void onRelease(int i) {
-
-        }
-
-        // 之前codes字段定义的值
-        @Override
-        public void onKey(int primaryCode, int[] ints) {
-            Editable editable = getText();
-            int start = getSelectionStart();
-            // 删除功能
-            if (primaryCode == Keyboard.KEYCODE_DELETE) {
-                if (!TextUtils.isEmpty(editable) &amp;&amp; start &gt; 0) {
-                    editable.delete(start - 1, start);
-                }
-            }
-            // 字母键盘与数字键盘切换
-            else if (primaryCode == Keyboard.KEYCODE_MODE_CHANGE) {
-                changeKeyBoard(!mChangeLetter);
-            }
-            // 完成
-            else if (primaryCode == Keyboard.KEYCODE_DONE) {
-                mKeyboardView.setVisibility(GONE);
-                mViewGroup.setVisibility(GONE);
-                mListener.hide();
-            }
-            // 切换大小写
-            else if (primaryCode == Keyboard.KEYCODE_SHIFT) {
-                changeCapital(!mIsCapital);
-                mKeyboardView.setKeyboard(mkeyboardLetter);
-            } else {
-                editable.insert(start, String.valueOf(Character.toChars(primaryCode)));
-            }
-        }
-
-        // 如果之前在keyOutputText定义过数值，则按键之后会在此回调中进行响应
-        @Override
-        public void onText(CharSequence charSequence) {
-
-        }
-
-        // 下面都是在键盘上进行手势操作
-        @Override
-        public void swipeLeft() {
-
-        }
-
-        @Override
-        public void swipeRight() {
-
-        }
-
-        @Override
-        public void swipeDown() {
-
-        }
-
-        @Override
-        public void swipeUp() {
-
-        }
-    });
-}
-</code></pre><p>大小写相互切换 </p>
-<pre><code> private void changeCapital(boolean isCapital) {
-    String lowercase = &quot;abcdefghijklmnopqrstuvwxyz&quot;;
-    List&lt;Keyboard.Key&gt; keyList = mkeyboardLetter.getKeys();
-    for (Keyboard.Key key : keyList) {
-        if (key.label != null &amp;&amp; lowercase.contains(key.label.toString().toLowerCase())) {
-            if (isCapital) {
-                key.label = key.label.toString().toUpperCase();
-                key.codes[0] -= 32;
-            } else {
-                key.label = key.label.toString().toLowerCase();
-                key.codes[0] += 32;
-            }
-        }
-        if (key.label != null &amp;&amp; &quot;小写&quot;.equals(key.label) &amp;&amp; isCapital) {
-            key.label = &quot;大写&quot;;
-        } else if (key.label != null &amp;&amp; &quot;大写&quot;.equals(key.label) &amp;&amp; !isCapital) {
-            key.label = &quot;小写&quot;;
-        }
-        if (key.label != null &amp;&amp; key.label == &quot;space&quot;) {
-            key.label = &quot;空格&quot;;
-        }
-    }
-    mIsCapital = isCapital;
-}
-</code></pre><p>数字键盘与字母键盘相互切换，不同的键盘重新设置到键盘视图上，只要调用<code>KeyboardView.setKeyboard()</code>即可</p>
-<pre><code>private void changeKeyBoard(boolean letter) {
-    mChangeLetter = letter;
-    if (mChangeLetter) {
-        mKeyboardView.setKeyboard(mkeyboardLetter);
-    } else {
-        mKeyboardView.setKeyboard(mKeyboardNumber);
-    }
-}
-</code></pre><p>一般通过触摸文本框显示键盘，点击返回键或空白处键盘收起。注意需要将系统输入法给隐藏，不然就乱七八糟的了</p>
-<pre><code> @Override
-public boolean onTouchEvent(MotionEvent event) {
-    KeyboardUtils.hideSoftInput(this);
-    if (event.getAction() == MotionEvent.ACTION_UP) {
-        if (mKeyboardView.getVisibility() != View.VISIBLE) {
-            mKeyboardView.setVisibility(View.VISIBLE);
-            mViewGroup.setVisibility(View.VISIBLE);
-            mListener.show();
-        }
-    }
-    return true;
-}
-
-@Override
-public boolean onKeyDown(int keyCode, KeyEvent event) {
-    if (keyCode == KeyEvent.KEYCODE_BACK &amp;&amp; mKeyboardView.getVisibility() != View.GONE
-            &amp;&amp; mViewGroup.getVisibility() != View.GONE) {
-        mKeyboardView.setVisibility(View.GONE);
-        mViewGroup.setVisibility(View.GONE);
-        mListener.hide();
-        return true;
-    }
-    return super.onKeyDown(keyCode, event);
-}
-
-@Override
-protected void onAttachedToWindow() {
-    super.onAttachedToWindow();
-    KeyboardUtils.hideSoftInput(this);
-}
-
-@Override
-protected void onDetachedFromWindow() {
-    super.onDetachedFromWindow();
-    KeyboardUtils.hideSoftInput(this);
-}
-</code></pre><p>如果你对键盘按键的UI定制需求强烈的话，你可以通过重写<code>KeyboardView</code>的<code>onDraw()</code>方法，遍历<code>keyboard.getKeys()</code>进行自定义</p>
-<blockquote>
-<p>相关代码在GitHub上:<a href="https://github.com/dulexu/KeyboardDemo" target="_blank" rel="noopener">github</a></p>
-</blockquote>
-
-          
+          前言   很简单，只需要用到系统提供了两个类Keyboard和KeyboardView，把写好键盘布局文件送到键盘类中，就可以实现相应的自定义功能。
+键盘布局&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;Ke
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/15/一个简单的键盘/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1391,45 +839,18 @@ protected void onDetachedFromWindow() {
       
         
           
-            <h4 id="CountDownTimer类介绍"><a href="#CountDownTimer类介绍" class="headerlink" title="CountDownTimer类介绍"></a>CountDownTimer类介绍</h4><p><code>CountDownTimer</code>类比较简单，总共就一个构造和4个方法。内部是通过handler实现。</p>
-<p><code>CountDownTimer(long time,long interval)</code> 参数time是总时间，interval是间隔时间。</p>
-<p><code>start()</code> 开始倒计时的方法。</p>
-<p><code>cancel()</code> 取消倒计时的方法。</p>
-<p><code>onTink(long time)</code> 抽象方法，每个间隔时间一到就会调用一次。参数time是指剩下的时间。</p>
-<p><code>onFinish()</code> 抽象方法，倒计时完成的方法。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>//手机号正则
-String pattern = &quot;^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8])|(19[7]))\\d{8}$&quot;;
-private void sendSMS() {
-    String number = etInputNumber.getText().toString().trim();
-    if (TextUtils.isEmpty(number)){
-        ToastUtil.show(getActivity(),&quot;手机号不能为空&quot;);
-        return;
-    }else if (number.matches(pattern)){
-        //调用短信API
-        presenter.sendSMS(number);
-        btnPayPswSendSms.setEnabled(false);
-        //启动倒计时
-        downTimer.start();
-    }else {
-        ToastUtil.show(getActivity(),&quot;手机号格式不正确&quot;);
-    }
-}
+          CountDownTimer类介绍CountDownTimer类比较简单，总共就一个构造和4个方法。内部是通过handler实现。
+CountDownTimer(long time,long interval) 参数time是总时间，interval是间隔时间。
+start() 开始倒计时的方法。
 
-private CountDownTimer downTimer = new CountDownTimer(60000,1000) {
-    //每隔1秒调用1次
-    @Override
-    public void onTick(long l) {
-        btnPayPswSendSms.setText((l / 1000) + &quot;秒&quot;);
-    }
-    //倒计时结束调用
-    @Override
-    public void onFinish() {
-        btnPayPswSendSms.setEnabled(true);
-        btnPayPswSendSms.setText(&quot;重新发送&quot;);
-    }
-};
-</code></pre>
-          
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/19/发送验证码倒计时功能/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1569,17 +990,15 @@ private CountDownTimer downTimer = new CountDownTimer(60000,1000) {
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/18/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

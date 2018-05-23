@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="乐胥的个人博客">
 <meta property="og:description" content="概念　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。 单例模式有以下特点：　　1. 单例类只能有一个实例。　　2. 单例类必须自己创建自己的唯一实例。　3. 单例类必须给所有其他对象提供这一实例。 一、懒汉式单例123456789101112//懒汉式单例类.在第一次调用的时候实例化自己   	public class">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-23T10:20:14.414Z">
+<meta property="og:updated_time" content="2018-05-23T10:29:30.586Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单例模式">
 <meta name="twitter:description" content="概念　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。 单例模式有以下特点：　　1. 单例类只能有一个实例。　　2. 单例类必须自己创建自己的唯一实例。　3. 单例类必须给所有其他对象提供这一实例。 一、懒汉式单例123456789101112//懒汉式单例类.在第一次调用的时候实例化自己   	public class">
@@ -391,49 +391,13 @@
 <p>   Singleton通过将构造方法限定为private避免了类在外部被实例化，在同一个虚拟机范围内，Singleton的唯一实例只能通过getInstance()方法访问。<br>（事实上，通过Java反射机制是能够实例化构造方法为private的类的，那基本上会使所有的Java单例实现失效。此问题在此处不做讨论，姑且掩耳盗铃地认为反射机制不存在。）</p>
 <p>但是以上懒汉式单例的实现没有考虑线程安全问题，它是线程不安全的，并发环境下很可能出现多个Singleton实例，要实现线程安全，有以下三种方式，都是对getInstance这个方法改造，保证了懒汉式单例的线程安全，如果你第一次接触单例模式，对线程安全不是很了解，可以先跳过下面这三小条，去看饿汉式单例，等看完后面再回头考虑线程安全的问题：</p>
 <ol>
-<li><p>在getInstance方法上加同步</p>
-<p> public static synchronized Singleton getInstance() {  </p>
-<pre><code>if (single == null) {    
-    single = new Singleton();  
-}    
-return single;  
-</code></pre><p> }  </p>
-</li>
-<li><p>双重检查锁定</p>
-<p> public static Singleton getInstance() {  </p>
-<pre><code>if (singleton == null) {    
-    synchronized (Singleton.class) {    
-       if (singleton == null) {    
-          singleton = new Singleton();   
-       }    
-    }    
-}    
-return singleton;   
-</code></pre><p> }  </p>
-</li>
-<li><p>静态内部类</p>
-<p> public class Singleton {    </p>
-<pre><code>private static class LazyHolder {    
-   private static final Singleton INSTANCE = new Singleton();    
-}    
-private Singleton (){}    
-public static final Singleton getInstance() {    
-   return LazyHolder.INSTANCE;    
-}    
-</code></pre><p> }  </p>
-</li>
+<li>在getInstance方法上加同步<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static synchronized Singleton getInstance() &#123;  </span><br><span class="line">	if (single == null) &#123;    </span><br><span class="line">		single = new Singleton();  </span><br><span class="line">    &#125;    </span><br><span class="line">    return single;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure></li>
+<li>双重检查锁定<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static Singleton getInstance() &#123;  </span><br><span class="line">       if (singleton == null) &#123;    </span><br><span class="line">           synchronized (Singleton.class) &#123;    </span><br><span class="line">              if (singleton == null) &#123;    </span><br><span class="line">                 singleton = new Singleton();   </span><br><span class="line">              &#125;    </span><br><span class="line">           &#125;    </span><br><span class="line">       &#125;    </span><br><span class="line">       return singleton;   </span><br><span class="line">   &#125;  </span><br></pre></td></tr></table></figure></li>
+<li>静态内部类<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;    </span><br><span class="line">    private static class LazyHolder &#123;    </span><br><span class="line">       private static final Singleton INSTANCE = new Singleton();    </span><br><span class="line">    &#125;    </span><br><span class="line">    private Singleton ()&#123;&#125;    </span><br><span class="line">    public static final Singleton getInstance() &#123;    </span><br><span class="line">       return LazyHolder.INSTANCE;    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+这种比上面1、2都好一些，既实现了线程安全，又避免了同步带来的性能影响。</li>
 </ol>
-<p>这种比上面1、2都好一些，既实现了线程安全，又避免了同步带来的性能影响。</p>
-<h3 id="二、饿汉式单例"><a href="#二、饿汉式单例" class="headerlink" title="二、饿汉式单例"></a>二、饿汉式单例</h3><pre><code>//饿汉式单例类.在类初始化时，已经自行实例化   
-public class Singleton1 {  
-    private Singleton1() {}  
-    private static final Singleton1 single = new Singleton1();  
-    //静态工厂方法   
-    public static Singleton1 getInstance() {  
-        return single;  
-    }  
-}  
-</code></pre><p>饿汉式在类创建的同时就已经创建好一个静态的对象供系统使用，以后不再改变，所以天生是线程安全的。</p>
+<h3 id="二、饿汉式单例"><a href="#二、饿汉式单例" class="headerlink" title="二、饿汉式单例"></a>二、饿汉式单例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//饿汉式单例类.在类初始化时，已经自行实例化   </span><br><span class="line">public class Singleton1 &#123;  </span><br><span class="line">    private Singleton1() &#123;&#125;  </span><br><span class="line">    private static final Singleton1 single = new Singleton1();  </span><br><span class="line">    //静态工厂方法   </span><br><span class="line">    public static Singleton1 getInstance() &#123;  </span><br><span class="line">        return single;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<p>饿汉式在类创建的同时就已经创建好一个静态的对象供系统使用，以后不再改变，所以天生是线程安全的。</p>
 <h3 id="饿汉式和懒汉式区别"><a href="#饿汉式和懒汉式区别" class="headerlink" title="饿汉式和懒汉式区别"></a>饿汉式和懒汉式区别</h3><p>从名字上来说，饿汉和懒汉，</p>
 <p>饿汉就是类一旦加载，就把单例初始化完成，保证getInstance的时候，单例是已经存在的了，</p>
 <p>而懒汉比较懒，只有当调用getInstance的时候，才回去初始化这个单例。</p>
