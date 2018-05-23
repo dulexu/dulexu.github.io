@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Android Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。 FAB 隐藏后不显示Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.A quick workaround">
+<meta name="description" content="Android Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="日常开发中遇到的一些问题及解决方案">
 <meta property="og:url" content="http://www.jinwenqi.top/2018/05/09/日常开发中遇到的一些问题及解决方案/index.html">
 <meta property="og:site_name" content="乐胥的个人博客">
-<meta property="og:description" content="Android Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。 FAB 隐藏后不显示Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.A quick workaround">
+<meta property="og:description" content="Android Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-14T13:22:43.481Z">
+<meta property="og:updated_time" content="2018-05-23T10:33:49.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日常开发中遇到的一些问题及解决方案">
-<meta name="twitter:description" content="Android Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。 FAB 隐藏后不显示Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.A quick workaround">
+<meta name="twitter:description" content="Android Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。">
 
 
 
@@ -386,7 +386,7 @@
 
       
         <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><ol>
-<li>Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。</li>
+<li>Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。<a id="more"></a></li>
 <li><p>FAB 隐藏后不显示<br>Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.<br>A quick workaround here is setting the FAB’s visibility to INVISIBLE at the end of the FAB’s hide animation.</p>
 <pre><code>if(dyConsumed&gt;0&amp;&amp;child.getVisibility()==View.VISIBLE) {
     child.hide(new FloatingActionButton.OnVisibilityChangedListener() {

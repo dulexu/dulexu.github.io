@@ -388,11 +388,7 @@
 
       
         
-          
-          概念　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。
-单例模式有以下特点：　　1. 单例类只能有一个实例。　　2. 单例类必须自己创建自己的唯一实例。　3. 单例类必须给所有其他对象提供这一实例。
-一、懒汉式单例12345
-          ...
+          <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/05/23/单例模式/#more" rel="contents">
@@ -538,11 +534,8 @@
 
       
         
-          
-          Android
-Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。
-FAB 隐藏后不显示Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to cal
-          ...
+          <h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><ol>
+<li>Android4.4及以下版本，TextView中不要使用矢量图，应该用位图。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/05/09/日常开发中遇到的一些问题及解决方案/#more" rel="contents">
@@ -688,11 +681,7 @@ FAB 隐藏后不显示Currently CoordinatorLayout is skipping views set to GONE 
 
       
         
-          
-          前言   很简单，只需要用到系统提供了两个类Keyboard和KeyboardView，把写好键盘布局文件送到键盘类中，就可以实现相应的自定义功能。
-键盘布局&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;Ke
-          ...
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>   很简单，只需要用到系统提供了两个类<code>Keyboard</code>和<code>KeyboardView</code>，把写好键盘布局文件送到键盘类中，就可以实现相应的自定义功能。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/15/一个简单的键盘/#more" rel="contents">
@@ -838,12 +827,12 @@ FAB 隐藏后不显示Currently CoordinatorLayout is skipping views set to GONE 
 
       
         
-          
-          CountDownTimer类介绍CountDownTimer类比较简单，总共就一个构造和4个方法。内部是通过handler实现。
-CountDownTimer(long time,long interval) 参数time是总时间，interval是间隔时间。
-start() 开始倒计时的方法。
-
-          ...
+          <h4 id="CountDownTimer类介绍"><a href="#CountDownTimer类介绍" class="headerlink" title="CountDownTimer类介绍"></a>CountDownTimer类介绍</h4><p><code>CountDownTimer</code>类比较简单，总共就一个构造和4个方法。内部是通过handler实现。</p>
+<p><code>CountDownTimer(long time,long interval)</code> 参数time是总时间，interval是间隔时间。</p>
+<p><code>start()</code> 开始倒计时的方法。</p>
+<p><code>cancel()</code> 取消倒计时的方法。</p>
+<p><code>onTink(long time)</code> 抽象方法，每个间隔时间一到就会调用一次。参数time是指剩下的时间。</p>
+<p><code>onFinish()</code> 抽象方法，倒计时完成的方法。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/19/发送验证码倒计时功能/#more" rel="contents">
