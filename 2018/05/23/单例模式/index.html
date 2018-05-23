@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="概念　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。 单例模式有以下特点：　　1. 单例类只能有一个实例。　　2. 单例类必须自己创建自己的唯一实例。　3. 单例类必须给所有其他对象提供这一实例。 一、懒汉式单例//懒汉式单例类.在第一次调用的时候实例化自己    public class Singleton {">
+<meta name="description" content="概念　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。 单例模式有以下特点：　　1. 单例类只能有一个实例。　　2. 单例类必须自己创建自己的唯一实例。　3. 单例类必须给所有其他对象提供这一实例。 一、懒汉式单例123456789101112//懒汉式单例类.在第一次调用的时候实例化自己   	public class">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单例模式">
 <meta property="og:url" content="http://www.jinwenqi.top/2018/05/23/单例模式/index.html">
 <meta property="og:site_name" content="乐胥的个人博客">
-<meta property="og:description" content="概念　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。 单例模式有以下特点：　　1. 单例类只能有一个实例。　　2. 单例类必须自己创建自己的唯一实例。　3. 单例类必须给所有其他对象提供这一实例。 一、懒汉式单例//懒汉式单例类.在第一次调用的时候实例化自己    public class Singleton {">
+<meta property="og:description" content="概念　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。 单例模式有以下特点：　　1. 单例类只能有一个实例。　　2. 单例类必须自己创建自己的唯一实例。　3. 单例类必须给所有其他对象提供这一实例。 一、懒汉式单例123456789101112//懒汉式单例类.在第一次调用的时候实例化自己   	public class">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-23T09:57:19.320Z">
+<meta property="og:updated_time" content="2018-05-23T10:20:14.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单例模式">
-<meta name="twitter:description" content="概念　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。 单例模式有以下特点：　　1. 单例类只能有一个实例。　　2. 单例类必须自己创建自己的唯一实例。　3. 单例类必须给所有其他对象提供这一实例。 一、懒汉式单例//懒汉式单例类.在第一次调用的时候实例化自己    public class Singleton {">
+<meta name="twitter:description" content="概念　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。 单例模式有以下特点：　　1. 单例类只能有一个实例。　　2. 单例类必须自己创建自己的唯一实例。　3. 单例类必须给所有其他对象提供这一实例。 一、懒汉式单例123456789101112//懒汉式单例类.在第一次调用的时候实例化自己   	public class">
 
 
 
@@ -387,19 +387,8 @@
       
         <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>　　java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍两种：懒汉式单例和饿汉式单例，忽略登记式单例。</p>
 <h4 id="单例模式有以下特点："><a href="#单例模式有以下特点：" class="headerlink" title="单例模式有以下特点："></a>单例模式有以下特点：</h4><p>　　1. 单例类只能有一个实例。<br>　　2. 单例类必须自己创建自己的唯一实例。<br>　3. 单例类必须给所有其他对象提供这一实例。</p>
-<h3 id="一、懒汉式单例"><a href="#一、懒汉式单例" class="headerlink" title="一、懒汉式单例"></a>一、懒汉式单例</h3><pre><code>//懒汉式单例类.在第一次调用的时候实例化自己   
-public class Singleton {  
-    private Singleton() {}  
-    private static Singleton single=null;  
-    //静态工厂方法   
-    public static Singleton getInstance() {  
-         if (single == null) {    
-             single = new Singleton();  
-         }    
-        return single;  
-    }  
-}  
-</code></pre><p>   Singleton通过将构造方法限定为private避免了类在外部被实例化，在同一个虚拟机范围内，Singleton的唯一实例只能通过getInstance()方法访问。<br>（事实上，通过Java反射机制是能够实例化构造方法为private的类的，那基本上会使所有的Java单例实现失效。此问题在此处不做讨论，姑且掩耳盗铃地认为反射机制不存在。）</p>
+<h3 id="一、懒汉式单例"><a href="#一、懒汉式单例" class="headerlink" title="一、懒汉式单例"></a>一、懒汉式单例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//懒汉式单例类.在第一次调用的时候实例化自己   </span><br><span class="line">	public class Singleton &#123;  </span><br><span class="line">	    private Singleton() &#123;&#125;  </span><br><span class="line">	    private static Singleton single=null;  </span><br><span class="line">	    //静态工厂方法   </span><br><span class="line">	    public static Singleton getInstance() &#123;  </span><br><span class="line">	         if (single == null) &#123;    </span><br><span class="line">	             single = new Singleton();  </span><br><span class="line">	         &#125;    </span><br><span class="line">	        return single;  </span><br><span class="line">	    &#125;  </span><br><span class="line">	&#125;  </span><br></pre></td></tr></table></figure>
+<p>   Singleton通过将构造方法限定为private避免了类在外部被实例化，在同一个虚拟机范围内，Singleton的唯一实例只能通过getInstance()方法访问。<br>（事实上，通过Java反射机制是能够实例化构造方法为private的类的，那基本上会使所有的Java单例实现失效。此问题在此处不做讨论，姑且掩耳盗铃地认为反射机制不存在。）</p>
 <p>但是以上懒汉式单例的实现没有考虑线程安全问题，它是线程不安全的，并发环境下很可能出现多个Singleton实例，要实现线程安全，有以下三种方式，都是对getInstance这个方法改造，保证了懒汉式单例的线程安全，如果你第一次接触单例模式，对线程安全不是很了解，可以先跳过下面这三小条，去看饿汉式单例，等看完后面再回头考虑线程安全的问题：</p>
 <ol>
 <li><p>在getInstance方法上加同步</p>
