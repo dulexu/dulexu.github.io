@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="乐胥的个人博客">
 <meta property="og:description" content="Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.A quick workaround here is setting the FAB’s visibility to INVISIBLE at the e">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-28T12:51:30.855Z">
+<meta property="og:updated_time" content="2018-05-28T14:58:45.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FAB 隐藏后不显示">
 <meta name="twitter:description" content="Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.A quick workaround here is setting the FAB’s visibility to INVISIBLE at the e">
@@ -375,17 +375,7 @@
       
 
       
-        <p>Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.<br>A quick workaround here is setting the FAB’s visibility to INVISIBLE at the end of the FAB’s hide animation.<br><code>if(dyConsumed&gt;0&amp;&amp;child.getVisibility()==View.VISIBLE) {
-            child.hide(new FloatingActionButton.OnVisibilityChangedListener() {
-                @Override
-                public void onHidden(FloatingActionButton fab) {
-                    super.onHidden(fab);
-                    fab.setVisibility(View.INVISIBLE);
-                }
-            });
-        }else if(dyConsumed&lt;0&amp;&amp;child.getVisibility()!=View.VISIBLE){
-            child.show();
-        }</code></p>
+        <p>Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.<br>A quick workaround here is setting the FAB’s visibility to INVISIBLE at the end of the FAB’s hide animation.<a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if(dyConsumed&gt;0&amp;&amp;child.getVisibility()==View.VISIBLE) &#123;</span><br><span class="line">	child.hide(new FloatingActionButton.OnVisibilityChangedListener() &#123;</span><br><span class="line">		@Override</span><br><span class="line">    	public void onHidden(FloatingActionButton fab) &#123;</span><br><span class="line">			super.onHidden(fab);</span><br><span class="line">			fab.setVisibility(View.INVISIBLE);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;else if(dyConsumed&lt;0&amp;&amp;child.getVisibility()!=View.VISIBLE)&#123;</span><br><span class="line">	child.show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -425,6 +415,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/28/为AS添加代理/" rel="prev" title="为AS添加SSR代理">
+                为AS添加SSR代理 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -501,7 +495,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -514,7 +508,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[为AS添加SSR代理]]></title>
+    <url>%2F2018%2F05%2F28%2F%E4%B8%BAAS%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%90%86%2F</url>
+    <content type="text"><![CDATA[setting host: 127.0.0.1 port: 1080 Manual proxy configuration是人工设置代理的意思. SSR是SOCKS代理方式 127.0.0.1的意思是用本机做代理 1080是SSR默认的端口号]]></content>
+      <tags>
+        <tag>android studio</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[FAB 隐藏后不显示]]></title>
     <url>%2F2018%2F05%2F28%2FFAB-%E9%9A%90%E8%97%8F%E5%90%8E%E4%B8%8D%E6%98%BE%E7%A4%BA%2F</url>
-    <content type="text"><![CDATA[Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.A quick workaround here is setting the FAB’s visibility to INVISIBLE at the end of the FAB’s hide animation.if(dyConsumed&gt;0&amp;&amp;child.getVisibility()==View.VISIBLE) { child.hide(new FloatingActionButton.OnVisibilityChangedListener() { @Override public void onHidden(FloatingActionButton fab) { super.onHidden(fab); fab.setVisibility(View.INVISIBLE); } }); }else if(dyConsumed&lt;0&amp;&amp;child.getVisibility()!=View.VISIBLE){ child.show(); }]]></content>
+    <content type="text"><![CDATA[Currently CoordinatorLayout is skipping views set to GONE when looking for behaviours to call in its onNestedScroll method.A quick workaround here is setting the FAB’s visibility to INVISIBLE at the end of the FAB’s hide animation.1234567891011if(dyConsumed&gt;0&amp;&amp;child.getVisibility()==View.VISIBLE) &#123; child.hide(new FloatingActionButton.OnVisibilityChangedListener() &#123; @Override public void onHidden(FloatingActionButton fab) &#123; super.onHidden(fab); fab.setVisibility(View.INVISIBLE); &#125; &#125;);&#125;else if(dyConsumed&lt;0&amp;&amp;child.getVisibility()!=View.VISIBLE)&#123; child.show();&#125;]]></content>
       <tags>
         <tag>Android</tag>
       </tags>
@@ -19,7 +27,10 @@
   <entry>
     <title><![CDATA[面试问到的一些知识点]]></title>
     <url>%2F2018%2F05%2F23%2F%E9%9D%A2%E8%AF%95%E9%97%AE%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%2F</url>
-    <content type="text"><![CDATA[intent 传值的大小有限制吗]]></content>
+    <content type="text"><![CDATA[intent 传值的大小有限制吗 内存优化 三级缓存 事件分发 Handler内存泄漏 扫描二维码原理 webview写在xml里还是new 原因（内存泄漏） 什么是OOP 自定义view 视频解码 说一下service 看过哪些源码 工厂模式 单例模式 微信支付流程 即时通讯]]></content>
+      <tags>
+        <tag>面试</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[单例模式]]></title>
