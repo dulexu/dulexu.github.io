@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="Android Developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="乐胥的个人博客">
-<meta property="og:url" content="http://www.jinwenqi.top/archives/2018/05/index.html">
+<meta name="description" content="创建FastScrollLinearLayoutManager，继承LinearLayoutManager复写smoothScrollToPosition()方法，主要复写LinearSmoothScroller中方法">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RecyclerView 快速滑动到顶部">
+<meta property="og:url" content="http://www.jinwenqi.top/2018/05/28/RecyclerView-快速滑动到顶部/index.html">
 <meta property="og:site_name" content="乐胥的个人博客">
-<meta property="og:description" content="Android Developer">
+<meta property="og:description" content="创建FastScrollLinearLayoutManager，继承LinearLayoutManager复写smoothScrollToPosition()方法，主要复写LinearSmoothScroller中方法">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-28T12:33:13.803Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="乐胥的个人博客">
-<meta name="twitter:description" content="Android Developer">
+<meta name="twitter:title" content="RecyclerView 快速滑动到顶部">
+<meta name="twitter:description" content="创建FastScrollLinearLayoutManager，继承LinearLayoutManager复写smoothScrollToPosition()方法，主要复写LinearSmoothScroller中方法">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.jinwenqi.top/archives/2018/05/"/>
+  <link rel="canonical" href="http://www.jinwenqi.top/2018/05/28/RecyclerView-快速滑动到顶部/"/>
 
 
 
 
 
-  <title>归档 | 乐胥的个人博客</title>
+  <title>RecyclerView 快速滑动到顶部 | 乐胥的个人博客</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,185 +283,318 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.jinwenqi.top/2018/05/28/RecyclerView-快速滑动到顶部/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lexu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乐胥的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">RecyclerView 快速滑动到顶部</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T20:31:30+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 7 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/28/RecyclerView-快速滑动到顶部/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/05/28/RecyclerView-快速滑动到顶部/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-        
+          
+          
+             <span id="/2018/05/28/RecyclerView-快速滑动到顶部/" class="leancloud_visitors" data-flag-title="RecyclerView 快速滑动到顶部">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/28/RecyclerView-快速滑动到顶部/" itemprop="url">
-              
-                <span itemprop="name">RecyclerView 快速滑动到顶部</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-28T20:31:30+08:00"
-              content="2018-05-28" >
-          05-28
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/23/面试问到的一些知识点/" itemprop="url">
-              
-                <span itemprop="name">面试问到的一些知识点</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-23T18:37:34+08:00"
-              content="2018-05-23" >
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/23/单例模式/" itemprop="url">
-              
-                <span itemprop="name">单例模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-23T17:37:08+08:00"
-              content="2018-05-23" >
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <p>创建FastScrollLinearLayoutManager，继承LinearLayoutManager<br>复写smoothScrollToPosition()方法，主要复写LinearSmoothScroller中方法<br><a id="more"></a></p>
+<pre><code>public class FastScrollLinearLayoutManager extends LinearLayoutManager {
+    public FastScrollLinearLayoutManager(Context context) {
+        super(context);
+    }
 
-        
-        
+    @Override
+    public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state, int position) {
+       LinearSmoothScroller linearSmoothScroller = new LinearSmoothScroller(recyclerView.getContext()) {
 
-        
+            @Override 
+            public PointF computeScrollVectorForPosition(int targetPosition) {
+                return  FastScrollLinearLayoutManager.this.computeScrollVectorForPosition(targetPosition);
+            }
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+            //该方法控制速度。
+            //if returned value is 2 ms, it means scrolling 1000 pixels with LinearInterpolation should take 2 seconds.
+            @Override 
+            protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
+                /*
+                     控制单位速度,  毫秒/像素, 滑动1像素需要多少毫秒.
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/09/日常开发中遇到的一些问题及解决方案/" itemprop="url">
-              
-                <span itemprop="name">日常开发中遇到的一些问题及解决方案</span>
-              
-            </a>
-        
-      </h2>
+                     默认为 (25F/densityDpi) 毫秒/像素
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-09T17:52:15+08:00"
-              content="2018-05-09" >
-          05-09
-        </time>
-      </div>
+                     mdpi上, 1英寸有160个像素点, 25/160,
+                     xxhdpi,1英寸有480个像素点, 25/480,
+                  */
 
-    </header>
-  </article>
+                  //return 10F / displayMetrics.densityDpi;//可以减少时间，默认25F
+                 return super.calculateSpeedPerPixel(displayMetrics);
+            }
 
+           //该方法计算滑动所需时间。在此处间接控制速度。
+           //Calculates the time it should take to scroll the given distance (in pixels)
+           @Override 
+           protected int calculateTimeForScrolling(int dx) {
+               /*
+                   控制距离, 然后根据上面那个方(calculateSpeedPerPixel())提供的速度算出时间,
 
+                   默认一次 滚动 TARGET_SEEK_SCROLL_DISTANCE_PX = 10000个像素,
+
+                   在此处可以减少该值来达到减少滚动时间的目的.
+                */
+
+                //间接计算时提高速度，也可以直接在calculateSpeedPerPixel提高
+                if (dx &gt; 3000) {
+                    dx = 3000;
+                }
+
+                int time = super.calculateTimeForScrolling(dx);
+                LogUtil.d(time);//打印时间看下
+
+                return time;
+            }
+        };
+
+        linearSmoothScroller.setTargetPosition(position);
+        startSmoothScroll(linearSmoothScroller);
+    }
+}
+</code></pre><p>从复写的两个方法可以看出，都是为了提高滑动速度。一种是直接修改速度，另外一种是通过减少距离来减少所需时间，间接提高滑动速度。</p>
+<ul>
+<li>RecyclerView 滑动过程梳理</li>
+</ul>
+<ol>
+<li><p>调用RecyclerView.smoothScrollToPosition(position)时</p>
+<p> `public void smoothScrollToPosition(int position) {</p>
+<pre><code>//...直接调用了LayoutManager的该方法
+mLayout.smoothScrollToPosition(this, mState, position);
+</code></pre><p> }`</p>
+</li>
+<li><p>LinearLayoutManager中</p>
+<p> @Override<br> public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state,int position) {</p>
+<pre><code>LinearSmoothScroller linearSmoothScroller = new  LinearSmoothScroller(recyclerView.getContext()) {
+          //...
+        };
+//设置终点位置
+linearSmoothScroller.setTargetPosition(position);
+//开始滚动，使用LinearSmoothScroller(一直匀速滑动，当targetPosition出现在屏幕上时再减速滑动)，startSmoothScroll()是LayoutManager中的方法
+startSmoothScroll(linearSmoothScroller);
+</code></pre><p> }</p>
+</li>
+<li><p>LayoutManager中</p>
+<p> public void startSmoothScroll(SmoothScroller smoothScroller) {</p>
+<pre><code>//...
+mSmoothScroller = smoothScroller;
+//调用SmoothScroller.start()方法开始滚动,this参数指当前LayoutManager
+mSmoothScroller.start(mRecyclerView, this);
+</code></pre><p> }</p>
+</li>
+<li><p>SmoothScroller中</p>
+<p> void start(RecyclerView recyclerView, LayoutManager layoutManager) {</p>
+<pre><code>//...
+//使用ViewFlinger进行动画，ViewFlinger实现了Runnable接口，并且内部使用了Scroller，这样就可以post自己进而对RecyclerView不断layout就可以实现滑动
+mRecyclerView.mViewFlinger.postOnAnimation();
+</code></pre><p> }</p>
+</li>
+<li><p>ViewFlinger中，这是实现滑动的重点,省略了很多代码逻辑</p>
+<p> private class ViewFlinger implements Runnable {</p>
+<pre><code>@Override
+public void run() {
+   if (scroller.computeScrollOffset()) {
+       //调用SmoothScroller的onAnimation方法
+       smoothScroller.onAnimation(dx - overscrollX, dy - overscrollY);
+   }
+}
+</code></pre><p> }</p>
+</li>
+<li><p>SmoothScroller中</p>
+<p> private void onAnimation(int dx, int dy) {</p>
+<pre><code>//...
+if (mTargetView != null) {
+    // verify target position
+    if (getChildPosition(mTargetView) == mTargetPosition) {
+        //要滑动到的位置已经显示在屏幕上，onTargetFound()方法里update了差值器，由线性差值器变成了减速的差值器。
+        onTargetFound(mTargetView, recyclerView.mState, mRecyclingAction);
+         mRecyclingAction.runIfNecessary(recyclerView);
+     }
+
+     //...
+
+    if (mRunning) {
+        //再下一次滑动
+        onSeekTargetStep(dx, dy, recyclerView.mState, mRecyclingAction);
+        //调用内部类Action的runIfNecessary方法
+        mRecyclingAction.runIfNecessary(recyclerView);
+        }
+    }
+</code></pre></li>
+<li><p>Action中</p>
+<p> private void runIfNecessary(RecyclerView recyclerView) {</p>
+<pre><code>//调用了ViewFlinger.smoothScrollBy()方法，并传入了mDuration，mDuration是在SmoothScroller中upDate()时传入的，就是由前文讲的两个方法共同决定的
+recyclerView.mViewFlinger.smoothScrollBy(mDx, mDy, mDuration, mInterpolator);
+</code></pre><p> }</p>
+</li>
+<li><p>ViewFlinger中开始滚动</p>
+<p> public void smoothScrollBy(int dx, int dy, int duration, Interpolator interpolator) {</p>
+<pre><code>    if (mInterpolator != interpolator) {
+        mInterpolator = interpolator;
+        mScroller = ScrollerCompat.create(getContext(), interpolator);
+    }
+    setScrollState(SCROLL_STATE_SETTLING);
+    mLastFlingX = mLastFlingY = 0;
+    //调用Scroller开始滚动，此处即duration
+    mScroller.startScroll(0, 0, dx, dy, duration);
+    postOnAnimation();
+}
+</code></pre></li>
+</ol>
+<p>这块粗略的按照流程说了一下滚动过程，涉及的类比较多，最终通过Scroller来进行滚动。</p>
 
       
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/23/面试问到的一些知识点/" rel="next" title="面试问到的一些知识点">
+                <i class="fa fa-chevron-left"></i> 面试问到的一些知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -467,6 +602,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -676,6 +825,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -693,6 +846,18 @@
       <script id="dsq-count-scr" src="https://lexu.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.jinwenqi.top/2018/05/28/RecyclerView-快速滑动到顶部/';
+          this.page.identifier = '2018/05/28/RecyclerView-快速滑动到顶部/';
+          this.page.title = 'RecyclerView 快速滑动到顶部';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://lexu.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
